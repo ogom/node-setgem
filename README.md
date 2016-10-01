@@ -7,11 +7,16 @@ setgem is [GR-CITRUS](http://gadget.renesas.com/ja/product/citrus.html) client a
 ## Features
 
 * CLI is sub command style.
-* Compile mruby and send file.
+* Port to be selected in the automatic to see the manufacturer of RENESAS.
+* Compile [mruby](http://mruby.org/) and send file.
+
+## Requirements
+
+* [mruby](https://github.com/mruby/mruby)
 
 ## Installation
 
-```
+```bash
 $ npm install setgem -g
 ```
 
@@ -21,7 +26,7 @@ $ npm install setgem -g
 
 Invoke interactive configuration.
 
-```
+```bash
 $ setgem init
 ? Serial Port? /dev/cu.usbmodem1_1
 ? Baud Rate? 9600
@@ -36,7 +41,7 @@ mruby: 1.2.0
 
 Write and Running or Execrate.
 
-```
+```bash
 $ setgem write main ./main.rb
 $ setgem run main
 $ setgem exec main ./main.rb --build
@@ -44,7 +49,7 @@ $ setgem exec main ./main.rb --build
 
 ### Program
 
-```
+```ruby
 var setgem = require('setgem');
 var client = setgem.createClient({
   serialport: {
@@ -65,7 +70,7 @@ client.citrus.info(function(err, res) {
 
 ## Tests
 
-```
+```bash
 $ npm test
 ```
 
