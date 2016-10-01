@@ -1,0 +1,100 @@
+#!/usr/bin/env node
+
+/*!
+ * setgem
+ * Copyright(c) 2016 ogom
+ * MIT Licensed
+ */
+'use strict';
+
+var cli = require('../lib/cli_helper'),
+    utils = require('../lib/utils');
+
+cli.program
+  .version('0.0.1')
+  .option('-d, --debug', 'Enable debug output')
+
+cli.program
+  .command('info')
+  .description('Get gadget information')
+  .action(function() {
+    cli.client().citrus.info(function(err, res) {
+      cli.output(err, res)
+    });
+  });
+
+cli.program
+  .command('write <name> <file>')
+  .description('Write file of the name on gadget')
+  .option('-b, --build', 'mruby compile')
+  .action(function(name, file) {
+    var program = cli.subcommand(cli.program.commands, 'write');
+    utils.readmrb(file, program.build, function(err, data) {
+      cli.client().citrus.write(name, data, function(err, data) {
+        //cli.output(err, res)
+      });
+    });
+  });
+
+cli.program
+  .command('run <name>')
+  .description('Running of the name on gadget')
+  .action(function(name) {
+    cli.client().citrus.run(name, function(err, res) {
+      //cli.output(err, res)
+    });
+  });
+
+cli.program
+  .command('exec <name> <file>')
+  .description('Execrate file of the name on gadget')
+  .option('-b, --build', 'mruby compile')
+  .action(function(name, file) {
+    var program = cli.subcommand(cli.program.commands, 'exec');
+    utils.readmrb(file, program.build, function(err, data) {
+      cli.client().citrus.write(name, data, function(err, data) {
+        cli.client().citrus.run(name, function(err, res) {
+          //cli.output(err, res)
+        });
+      });
+    });
+  });
+
+cli.program
+  .command('list')
+  .description('List of the name on gadget')
+  .action(function() {
+    cli.client().citrus.list(function(err, res) {
+      //cli.output(err, res)
+    });
+  });
+
+cli.program
+  .command('init')
+  .description('Invoke interactive (re)configuration')
+  .action(function() {
+    cli.configure.init(function() {
+      cli.config = cli.configure.read();
+      cli.client().citrus.info(function(err, res) {
+        cli.output(err, res)
+      });
+    });
+  });
+
+cli.program
+  .command('use [serial port]')
+  .description('Use serial port')
+  .action(function(port) {
+    var config = cli.config;
+    if (port) {
+      config.serialport_port = port;
+      cli.configure.write(config);
+    }
+    console.log("use %s", config.serialport_port);
+  });
+
+cli.program.parse(process.argv);
+
+if (process.argv.length == 2) {
+  cli.program.help();
+}

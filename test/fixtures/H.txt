@@ -1,0 +1,1 @@
+WAKAYAMA.RB Board Ver.CITRUS-2.08(2016/9/22)f3(256KB), mruby 1.2.0 (H [ENTER])

@@ -1,0 +1,35 @@
+{
+  "name": "setgem",
+  "version": "0.0.1",
+  "description": "GR-CITRUS client and GR-CITRUS Command Line Interface",
+  "main": "./index",
+  "bin": {
+    "setgem": "./bin/setgem"
+  },
+  "scripts": {
+    "test": "make test-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ogom/node-setgem.git"
+  },
+  "keywords": [
+    "mruby",
+    "GR-CITRUS"
+  ],
+  "author": "ogom <ogom@hotmail.co.jp>",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "commander": "^2.9.x",
+    "inquirer": "^1.2.1",
+    "serialport": "^4.0.x"
+  },
+  "devDependencies": {
+    "chai": "^3.5.x",
+    "mocha": "^3.1.x"
+  },
+  "engines": {
+    "node": "*"
+  }
+}
