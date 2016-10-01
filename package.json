@@ -14,6 +14,7 @@
     "url": "git://github.com/ogom/node-setgem.git"
   },
   "keywords": [
+    "CLI",
     "mruby",
     "GR-CITRUS"
   ],

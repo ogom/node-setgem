@@ -4,6 +4,8 @@
 
 setgem is [GR-CITRUS](http://gadget.renesas.com/ja/product/citrus.html) client and GR-CITRUS Command Line Interface.
 
+[![https://gyazo.com/2700dbd8858484d6f51243915258643d](https://i.gyazo.com/2700dbd8858484d6f51243915258643d.gif)](https://gyazo.com/2700dbd8858484d6f51243915258643d)
+
 ## Features
 
 * CLI is sub command style.
