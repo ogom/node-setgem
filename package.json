@@ -1,6 +1,6 @@
 {
   "name": "setgem",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "GR-CITRUS client and GR-CITRUS Command Line Interface",
   "main": "./index",
   "bin": {
