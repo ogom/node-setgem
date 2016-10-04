@@ -11,7 +11,7 @@ var cli = require('../lib/cli_helper'),
     utils = require('../lib/utils');
 
 cli.program
-  .version('0.0.1')
+  .version('0.1.0')
   .option('-d, --debug', 'Enable debug output')
 
 cli.program
@@ -82,15 +82,23 @@ cli.program
   });
 
 cli.program
-  .command('use [serial port]')
-  .description('Use serial port')
-  .action(function(port) {
+  .command('use [file]')
+  .description('Use source file')
+  .action(function(file) {
     var config = cli.config;
-    if (port) {
-      config.serialport_port = port;
+    if (file) {
+      config.source_file = file;
       cli.configure.write(config);
     }
-    console.log("use %s", config.serialport_port);
+    console.log("use %s", config.source_file);
+  });
+
+cli.program
+  .command('trem')
+  .description('Connect to the terminal')
+  .action(function() {
+    var config = cli.config;
+    cli.client().citrus.trem(config.source_file);
   });
 
 cli.program.parse(process.argv);

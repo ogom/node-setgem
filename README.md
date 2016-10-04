@@ -10,11 +10,12 @@ setgem is [GR-CITRUS](http://gadget.renesas.com/ja/product/citrus.html) client a
 
 * CLI is sub command style.
 * Port to be selected in the automatic to see the manufacturer of RENESAS.
-* Compile [mruby](http://mruby.org/) and send file.
+* Compile [mruby](http://mruby.org/) and Send Textfile.
 
 ## Requirements
 
 * [mruby](https://github.com/mruby/mruby)
+* [Serialport](https://github.com/EmergingTechnologyAdvisors/node-serialport)
 
 ## Installation
 
@@ -47,6 +48,31 @@ Write and Running or Execrate.
 $ setgem write main ./main.rb
 $ setgem run main
 $ setgem exec main ./main.rb --build
+```
+
+#### Terminal
+
+Connect to the terminal
+
+[![https://gyazo.com/35c2248b5a6813068194a1bcff21d07b](https://i.gyazo.com/35c2248b5a6813068194a1bcff21d07b.gif)](https://gyazo.com/35c2248b5a6813068194a1bcff21d07b)
+
+```bash
+$ setgem use ./main.rb
+$ setgem trem
+H
+
+EEPROM FileWriter Ver. 1.75.v2
+ Command List
+```
+
+`control` + `x` key, to execrate the Compile and Send Textfile.
+
+```bash
+>X main.mrb 494
+
+Waiting  60 59
+main.mrb(494) Saving....
+Hello, mruby.
 ```
 
 ### Program
